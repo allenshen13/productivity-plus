@@ -1,0 +1,13 @@
+{
+  "name": "Notepad & Stopwatch",
+  "version": "1.0",
+  "description": "A Chrome extension with a notepad and stopwatch.",
+  "manifest_version": 3,
+  "author": "Allen Shen",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Productivity+"
+
+  }
+  
+}
