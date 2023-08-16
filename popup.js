@@ -77,3 +77,12 @@ function f10(e) {
 window.addEventListener('load', () => {
     textarea.value = "";
 });
+
+function goToAnotherPage() {
+    document.body.style.transition = "transform 0.5s ease-in-out";
+    document.body.style.transform = "translateX(-100%)";
+
+    setTimeout(function () {
+        window.location.href = "/Timer/timer.html"; // Replace with your target page URL
+    }, 500); // Wait for the animation to finish before navigating
+}
