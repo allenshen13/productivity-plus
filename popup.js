@@ -1,4 +1,7 @@
 const textarea = document.getElementById("textarea1");
+//const noteTextarea = document.getElementById('note');
+const saveButton = document.getElementById('save');
+
 
 function f1(e) {
     let value = e.value;
@@ -87,8 +90,7 @@ function goToAnotherPage() {
     }, 500); // Wait for the animation to finish before navigating
 }
 
-const noteTextarea = document.getElementById('note');
-const saveButton = document.getElementById('save');
+
 
 // Load saved note on popup open
 chrome.storage.local.get('note', (data) => {
@@ -99,7 +101,7 @@ chrome.storage.local.get('note', (data) => {
 
 // Save note on button click
 saveButton.addEventListener('click', () => {
-  const note = noteTextarea.value;
+  const note = textarea.value;
   chrome.storage.local.set({ 'note': note }, () => {
     console.log('Note saved: ' + note);
   });
