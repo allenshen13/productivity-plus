@@ -2,6 +2,7 @@
   "name": "Notepad & Stopwatch",
   "version": "1.0",
   "description": "A Chrome extension with a notepad and stopwatch.",
+  "permissions": ["storage", "tabs"], 
   "manifest_version": 3,
   "author": "Allen Shen",
   "action": {
