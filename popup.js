@@ -1,6 +1,21 @@
-const textarea = document.getElementById("textarea1");
-//const noteTextarea = document.getElementById('note');
-const saveButton = document.getElementById('save');
+document.addEventListener('DOMContentLoaded', () => {
+
+    const textarea = document.getElementById("textarea1");
+    const saveButton = document.getElementById('save');
+  
+    document.getElementById('font-size').addEventListener('change', (e) => f1(e.target));
+    document.querySelector('.second button:nth-child(1)').addEventListener('click', (e) => f2(e.target));
+    document.querySelector('.second button:nth-child(2)').addEventListener('click', (e) => f3(e.target));
+    document.querySelector('.second button:nth-child(3)').addEventListener('click', (e) => f4(e.target));
+    document.querySelector('.third button:nth-child(1)').addEventListener('click', (e) => f5(e.target));
+    document.querySelector('.third button:nth-child(2)').addEventListener('click', (e) => f6(e.target));
+    document.querySelector('.third button:nth-child(3)').addEventListener('click', (e) => f7(e.target));
+    document.querySelector('.fourth button:nth-child(1)').addEventListener('click', (e) => f8(e.target));
+    document.querySelector('.fourth button:nth-child(2)').addEventListener('click', f9);
+    document.querySelector('.fourth input[type=color]').addEventListener('change', (e) => f10(e.target));
+  
+    document.getElementById('slideButton').addEventListener('click', goToAnotherPage);
+
 
 
 function f1(e) {
@@ -91,18 +106,28 @@ function goToAnotherPage() {
 }
 
 
-
 // Load saved note on popup open
 chrome.storage.local.get('note', (data) => {
-  if (data.note) {
-    noteTextarea.value = data.note;
-  }
-});
+    if (chrome.runtime.lastError) {
+      console.error(chrome.runtime.lastError);
+    } else if (data.note) {
+      textarea.value = data.note;
+    }
+  });
+  
 
 // Save note on button click
 saveButton.addEventListener('click', () => {
   const note = textarea.value;
   chrome.storage.local.set({ 'note': note }, () => {
-    console.log('Note saved: ' + note);
+    if (chrome.runtime.lastError) {
+      console.error(chrome.runtime.lastError);
+    } else {
+      console.log('Note saved: ' + note);
+    }
   });
+  
 })
+
+
+});
